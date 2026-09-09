@@ -1,0 +1,51 @@
+# KisanSetu Backend - Application Configuration
+spring:
+  application:
+    name: kisansetu-backend
+
+  # H2 Database for Development
+  datasource:
+    url: jdbc:h2:mem:kisansetudb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: pass123
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+  # Jackson
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+
+# JWT Configuration
+jwt:
+  secret: KisanSetuOdishaAgriMarketplaceSecretKey2026VeryLongSecureRandomStringForJWTSigning
+  expiration: 86400000  # 24 hours
+
+# AI Service
+ai-service:
+  url: http://localhost:8000
+
+# CORS
+cors:
+  allowed-origins: http://localhost:3000
