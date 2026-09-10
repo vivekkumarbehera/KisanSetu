@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/products")
@@ -23,7 +24,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductListing> getProduct(@PathVariable Long id) {
-        ProductListing listing = listingRepository.findById(id)
+        ProductListing listing = listingRepository.findById(Objects.requireNonNull(id))
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + id));
         return ResponseEntity.ok(listing);
     }

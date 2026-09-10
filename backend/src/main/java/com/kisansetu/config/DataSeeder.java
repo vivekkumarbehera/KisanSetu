@@ -17,6 +17,7 @@ import java.util.*;
 @Component
 @RequiredArgsConstructor
 @Slf4j
+@SuppressWarnings("null")
 public class DataSeeder implements CommandLineRunner {
 
     private final StateRepository stateRepository;
@@ -103,7 +104,7 @@ public class DataSeeder implements CommandLineRunner {
         crops.forEach(c -> cropMap.put(c.getName(), c));
 
         // 4. Seed Demo Users for All 6 Roles
-        User admin = userRepository.save(User.builder()
+        userRepository.save(User.builder()
                 .name("Dr. Ramesh Mohapatra (Dept of Agri)")
                 .email("admin@kisansetu.odisha.gov.in")
                 .phone("9437000001")
@@ -166,7 +167,7 @@ public class DataSeeder implements CommandLineRunner {
                 .verified(true)
                 .build());
 
-        User logisticsExpress = userRepository.save(User.builder()
+        userRepository.save(User.builder()
                 .name("Utkal Agri-Logistics Express")
                 .email("logistics.odisha@kisansetu.in")
                 .phone("9437000008")
